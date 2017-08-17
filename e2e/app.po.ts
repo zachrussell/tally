@@ -1,6 +1,6 @@
 import { browser, by, element } from 'protractor';
 
-export class PongPage {
+export class TallyPage {
   navigateTo() {
     return browser.get('/');
   }

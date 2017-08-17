@@ -1,10 +1,10 @@
-import { PongPage } from './app.po';
+import { TallyPage } from './app.po';
 
-describe('pong App', () => {
-  let page: PongPage;
+describe('tally App', () => {
+  let page: TallyPage;
 
   beforeEach(() => {
-    page = new PongPage();
+    page = new TallyPage();
   });
 
   it('should display welcome message', () => {
