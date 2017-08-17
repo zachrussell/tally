@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ScoreService } from './score-service.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  players = [];
+
+  constructor(
+    private _scoreService: ScoreService
+  ) {}
+
+  ngOnInit() {
+    this.players = this._scoreService.getPlayers();
+  }
+
+  addPlayer() {
+    this._scoreService.createPlayer('Zach Russell');
+    this.players = this._scoreService.getPlayers();
+  }
 }

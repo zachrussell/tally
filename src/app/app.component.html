@@ -1,8 +1,9 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
   <h1>
-    pong
+    tally
   </h1>
   
 </div>
-<app-leaderboard></app-leaderboard>
+<p (click)="addPlayer()">add</p>
+<app-leaderboard [players]="players"></app-leaderboard>
