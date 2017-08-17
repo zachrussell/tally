@@ -2,6 +2,12 @@ import { Injectable } from '@angular/core';
 import low from 'lowdb';
 const db = low('db');
 
+export interface IPlayer {
+  name: string;
+  wins: number;
+  losses: number;
+}
+
 @Injectable()
 export class ScoreService {
 
@@ -27,8 +33,14 @@ export class ScoreService {
   }
 
   createPlayer(name: string) {
+    const player: IPlayer = {
+      name: name,
+      wins: 0,
+      losses: 0
+    };
+
     db.get('players')
-    .push({ name: name, score: 0 })
+    .push(player)
     .write();
   }
 
