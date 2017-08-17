@@ -22,4 +22,8 @@ export class AppComponent {
     this._scoreService.createPlayer('Zach Russell');
     this.players = this._scoreService.getPlayers();
   }
+  
+  addTeam() {
+    console.log('need to implement');
+  }
 }

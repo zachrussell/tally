@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
+import uuid from 'uuid';
 import low from 'lowdb';
 const db = low('db');
 
+
 export interface IPlayer {
+  id: any;
   name: string;
   wins: number;
   losses: number;
@@ -34,6 +37,7 @@ export class ScoreService {
 
   createPlayer(name: string) {
     const player: IPlayer = {
+      id: uuid(),
       name: name,
       wins: 0,
       losses: 0
