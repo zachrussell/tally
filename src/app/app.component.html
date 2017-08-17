@@ -5,6 +5,7 @@
   </h1>
   
 </div>
-<p (click)="addPlayer()">add player</p>
+<input type="text" placeholder="player name" [(ngModel)]="playerName" (keyup.enter)="addPlayer(playerName)">
+
 <p (click)="addTeam()">add team</p>
 <app-leaderboard [players]="players"></app-leaderboard>

@@ -8,7 +8,6 @@ Leaderboard
   left: 50%;
   transform: translate(-50%, -50%);
   width: 285px;
-  height: 308px;
   background: linear-gradient(to bottom, #3a404d, #181c26);
   border-radius: 10px;
   box-shadow: 0 7px 30px rgba(62, 9, 11, .3);
@@ -29,22 +28,22 @@ Leaderboard
 
   }
 
-  ol {
-    counter-reset: leaderboard;
+  ul {
     -webkit-padding-start: 0px;
+    margin-bottom: 0;
+    list-style-type: none;
+
     li {
       position: relative;
       z-index: 1;
       font-size: 14px;
-      counter-increment: leaderboard;
       padding: 18px 10px 18px 50px;
       cursor: pointer;
       backface-visibility: hidden;
       transform: translateZ(0) scale(1.0, 1.0);
+      padding: 25px;
 
-
-      &::before {
-        content: counter(leaderboard);
+      .counter {
         position: absolute;
         z-index: 2;
         top: 15px;
@@ -110,7 +109,7 @@ Leaderboard
         opacity: 0;
       }
 
-      &:nth-child(1) {
+      &:first-child {
         background: #fa6855;
         &::after {
           background: #fa6855;
@@ -164,7 +163,7 @@ Leaderboard
         }
       }
 
-      &:nth-child(5) {
+      &:last-child {
         background: #c24448;
         border-radius: 0 0 10px 10px;
         &::after {

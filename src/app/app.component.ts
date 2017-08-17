@@ -8,6 +8,7 @@ import { ScoreService } from './score-service.service';
 })
 export class AppComponent {
   title = 'app';
+  playerName = '';
   players = [];
 
   constructor(
@@ -18,11 +19,12 @@ export class AppComponent {
     this.players = this._scoreService.getPlayers();
   }
 
-  addPlayer() {
-    this._scoreService.createPlayer('Zach Russell');
+  addPlayer(name) {
+    this._scoreService.createPlayer(name);
     this.players = this._scoreService.getPlayers();
+    this.playerName = '';
   }
-  
+
   addTeam() {
     console.log('need to implement');
   }

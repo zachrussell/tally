@@ -13,12 +13,13 @@ Codepen: https://codepen.io/supah/
     </svg>
     {{ title }}
   </h1>
-  <ol>
+  <ul>
     <li *ngFor="let player of players; let i = index" (click)="editScore(i)">
+			<span class="counter">{{ i + 1 }}</span>
       <mark>{{player.name}}</mark>
       <small>{{player.score}}</small>
     </li>
-  </ol>
+  </ul>
 </div>
 
 
