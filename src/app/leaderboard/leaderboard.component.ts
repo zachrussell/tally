@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ScoreService } from '../score-service.service';
 
 @Component({
   selector: 'app-leaderboard',
@@ -36,13 +37,20 @@ export class LeaderboardComponent implements OnInit {
       losses: 23    }
   ];
 
-  constructor() { }
+  constructor(private _scoreService: ScoreService) { }
+
 
   ngOnInit() {
+
   }
 
   editScore(index) {
     console.log('edit score for ', index);
+  }
+
+  addWin(e) {
+    let playerId = e.target.id;
+    this._scoreService.addWin(playerId);
   }
 
 }

@@ -54,4 +54,15 @@ export class ScoreService {
     .write();
   }
 
+  addWin(id) {
+    let players = this.getPlayers();
+    for (var i = 0; i < players.length; i++) {
+      console.log("i", players[i]);
+      if (players[i].id == id) {
+        players[i].wins += 1;
+      }
+    }
+    console.log('players', players);
+  }
+
 }
