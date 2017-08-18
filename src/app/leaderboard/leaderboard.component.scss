@@ -70,59 +70,59 @@ Leaderboard
         opacity: 0;
       }
 
-      &:first-child {
-        background: #fa6855;
-        &::after {
-          background: #fa6855;
-        }
-      }
+    //   &:first-child {
+    //     background: #fa6855;
+    //     &::after {
+    //       background: #fa6855;
+    //     }
+    //   }
 
-      &:nth-child(2) {
-        background: #e0574f;
-        &::after {
-          background: #e0574f;
-          box-shadow: 0 2px 0 rgba(0, 0, 0, .08);
-        }
+    //   &:nth-child(2) {
+    //     background: #e0574f;
+    //     &::after {
+    //       background: #e0574f;
+    //       box-shadow: 0 2px 0 rgba(0, 0, 0, .08);
+    //     }
 
-        & mark {
-          &::before, &::after {
-            border-top: 6px solid #ba4741;
-            bottom: -7px;
-          }
-        }
-      }
+    //     & mark {
+    //       &::before, &::after {
+    //         border-top: 6px solid #ba4741;
+    //         bottom: -7px;
+    //       }
+    //     }
+    //   }
 
-      &:nth-child(3) {
-        background: #d7514d;
-        &::after {
-          background: #d7514d;
-          box-shadow: 0 1px 0 rgba(0, 0, 0, .11);
-        }
+    //   &:nth-child(3) {
+    //     background: #d7514d;
+    //     &::after {
+    //       background: #d7514d;
+    //       box-shadow: 0 1px 0 rgba(0, 0, 0, .11);
+    //     }
 
-        & mark {
-          &::before, &::after {
-            border-top: 2px solid #b0433f;
-            bottom: -3px;
-          }
-        }
-      }
+    //     & mark {
+    //       &::before, &::after {
+    //         border-top: 2px solid #b0433f;
+    //         bottom: -3px;
+    //       }
+    //     }
+    //   }
 
-      &:nth-child(4) {
-        background: #cd4b4b;
-        &::after {
-          background: #cd4b4b;
-          box-shadow: 0 -1px 0 rgba(0, 0, 0, .15);
-        }
+    //   &:nth-child(4) {
+    //     background: #cd4b4b;
+    //     &::after {
+    //       background: #cd4b4b;
+    //       box-shadow: 0 -1px 0 rgba(0, 0, 0, .15);
+    //     }
 
-        & mark {
-          &::before, &::after {
-            top: -7px;
-            bottom: auto;
-            border-top: none;
-            border-bottom: 6px solid #a63d3d;;
-          }
-        }
-      }
+    //     & mark {
+    //       &::before, &::after {
+    //         top: -7px;
+    //         bottom: auto;
+    //         border-top: none;
+    //         border-bottom: 6px solid #a63d3d;;
+    //       }
+    //     }
+    //   }
 
       &:last-child {
         background: #c24448;

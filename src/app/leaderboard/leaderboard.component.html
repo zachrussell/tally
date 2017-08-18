@@ -17,6 +17,7 @@ Codepen: https://codepen.io/supah/
 		<li *ngFor="let player of players; let i = index; let first = first; let last = last"
 			[class.first-place]="first"
 			[class.last-place]="last"
+			[style.background]="gradients[i]"
 		>
 			<app-slot [player]="player" [position]="i + 1"></app-slot>
     </li>
