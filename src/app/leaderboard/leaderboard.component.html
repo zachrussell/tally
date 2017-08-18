@@ -14,10 +14,15 @@ Codepen: https://codepen.io/supah/
     {{ title }}
   </h1>
   <ul>
-    <li *ngFor="let player of players; let i = index" (click)="editScore(i)">
+    <li *ngFor="let player of players; let i = index">
 			<span class="counter">{{ i + 1 }}</span>
-      <mark>{{player.name}}</mark>
-      <small>{{player.score}}</small>
+			<mark>{{player.name}}</mark>
+			<small>{{player.wins}}</small>
+			<small>{{player.losses}}</small>
+			<div style="float:right; z-index: 999; position: relative;">
+					<button (click)="addWin($event)" id='{{player.id}}'>Win</button>
+					<button (click)="addLose($event)">Lose</button>
+			</div>
     </li>
   </ul>
 </div>
