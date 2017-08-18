@@ -1,15 +1,8 @@
 import { Injectable } from '@angular/core';
+import { IPlayer } from './IPlayer';
 import uuid from 'uuid';
 import low from 'lowdb';
 const db = low('db');
-
-
-export interface IPlayer {
-  id: any;
-  name: string;
-  wins: number;
-  losses: number;
-}
 
 @Injectable()
 export class ScoreService {
