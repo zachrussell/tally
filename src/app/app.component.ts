@@ -10,6 +10,7 @@ export class AppComponent {
   title = 'app';
   playerName = '';
   players = [];
+  teams = [];
 
   constructor(
     private _scoreService: ScoreService
@@ -17,6 +18,7 @@ export class AppComponent {
 
   ngOnInit() {
     this.players = this._scoreService.getPlayers();
+    this.teams = this._scoreService.getTeams();
   }
 
   addPlayer(name) {
@@ -25,7 +27,8 @@ export class AppComponent {
     this.playerName = '';
   }
 
-  addTeam() {
-    console.log('need to implement');
+  addTeam(idOne, idTwo) {
+    this._scoreService.createTeam(idOne, idTwo);
+    this.teams = this._scoreService.getTeams();
   }
 }

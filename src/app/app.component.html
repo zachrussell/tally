@@ -6,6 +6,19 @@
   
 </div>
 <input type="text" placeholder="player name" [(ngModel)]="playerName" (keyup.enter)="addPlayer(playerName)">
+<br>
 
-<p (click)="addTeam()">add team</p>
-<app-leaderboard [players]="players"></app-leaderboard>
+<select name="playerSelection" #playerOne>
+  <option *ngFor="let plr of players" [value]="plr.id">{{plr.name}}</option>
+</select>
+and
+<select name="playerSelection" #playerTwo>
+  <option *ngFor="let plr of players" [value]="plr.id">{{plr.name}}</option>
+</select>
+<p (click)="addTeam(playerOne.value, playerTwo.value)">add team</p>
+
+
+<div class="boards">
+  <app-leaderboard [title]="'Singles'" [players]="players"></app-leaderboard>
+  <app-leaderboard [title]="'Doubles'" [players]="teams"></app-leaderboard>
+</div>

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IPlayer } from './IPlayer';
+import { ITeam } from './ITeam';
 import uuid from 'uuid';
 import low from 'lowdb';
 const db = low('db');
@@ -42,9 +43,19 @@ export class ScoreService {
   }
 
   createTeam(playerOneId: number, playerTwoId: number) {
-    db.get('teams')
-    .push({ playerOne: playerOneId, playerTwo: playerTwoId })
-    .write();
+    const plrOne = db.get('players').find({ id: playerOneId }).value();
+    const plrTwo = db.get('players').find({ id: playerTwoId }).value();
+    const teamName = plrOne.name.split(' ')[0] + ' & ' + plrTwo.name.split(' ')[0];
+    const team: ITeam = {
+        id: uuid(),
+        name: teamName,
+        wins: 0,
+        losses: 0
+      };
+
+      db.get('teams')
+      .push(team)
+      .write();
   }
 
   addWin(player: IPlayer) {
