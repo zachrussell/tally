@@ -47,15 +47,14 @@ export class ScoreService {
     .write();
   }
 
-  addWin(id) {
-    const players = this.getPlayers();
-    for (let i = 0; i < players.length; i++) {
-      console.log('i', players[i]);
-      if (players[i].id === id) {
-        players[i].wins += 1;
-      }
-    }
-    console.log('players', players);
+  addWin(player: IPlayer) {
+    player.wins++;
+    db.get('players').find({ id: player.id }).assign(player).write();
+  }
+
+  addLoss(player: IPlayer) {
+    player.losses++;
+    db.get('players').find({ id: player.id }).assign(player).write();
   }
 
 }

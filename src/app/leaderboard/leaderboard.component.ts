@@ -9,7 +9,6 @@ import { ScoreService } from '../score-service.service';
 export class LeaderboardComponent implements OnInit {
 
   @Input() title = 'Leader Board';
-
   @Input() players = [];
 
   constructor(private _scoreService: ScoreService) { }

@@ -22,8 +22,11 @@ export class SlotComponent implements OnInit {
   }
 
   addWin(e) {
-    const playerId = e.target.id;
-    this._scoreService.addWin(playerId);
+    this._scoreService.addWin(this.player);
+  }
+
+  addLoss(e) {
+    this._scoreService.addLoss(this.player);
   }
 
 }
