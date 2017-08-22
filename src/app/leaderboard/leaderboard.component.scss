@@ -113,7 +113,6 @@ Leaderboard
       overflow: visible;
 
       &::after {
-        opacity: 1;
         transform: scaleX(1.06) scaleY(1.03);
       }
 
@@ -133,14 +132,15 @@ Leaderboard
 }
 
 .left-slide-button {
-  
+  color: rgb(76, 175, 80);
 }
 
 .right-slide-button {
-  
+  color: #993639;
 }
 
 .slide-button {
+  font-weight: bold;
   position: absolute;
   z-index: 0;
   top: 50%;
