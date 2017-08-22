@@ -11,6 +11,10 @@ export class SlotComponent implements OnInit {
 
   @Input() player: IPlayer = null;
   @Input() position: number = null;
+
+  public leftSideOffset: number = null;
+  public rightSideOffset: number = null;
+
   public menuShowing = false;
 
   constructor(private _scoreService: ScoreService) { }
@@ -29,13 +33,4 @@ export class SlotComponent implements OnInit {
   addLoss(e) {
     this._scoreService.addLoss(this.player);
   }
-
-  onSwipeLeft($event: PointerEvent) {
-    console.log('swipe', $event);
-  }
-
-  onDrag($event) {
-    console.log($event);
-  }
-
 }

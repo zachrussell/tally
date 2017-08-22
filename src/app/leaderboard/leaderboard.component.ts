@@ -22,6 +22,35 @@ export class LeaderboardComponent implements OnInit {
     this.setGradients();
   }
 
+  onSwipeLeft($event) {
+    console.log('swipe left', $event);
+    if ($event.target.offsetParent.localName === 'li') {
+      $event.target.offsetParent.style.right = Math.abs($event.deltaX) + 'px';
+    } else if ($event.target.localName === 'li') {
+      $event.target.style.right = ($event.deltaX * -1) + 'px';
+    }
+  }
+
+  onSwipeRight($event) {
+    console.log('swipe right', $event.deltaX);
+    if ($event.target.offsetParent.localName === 'li') {
+      $event.target.offsetParent.style.left = Math.abs($event.deltaX) + 'px';
+    } else if ($event.target.localName === 'li') {
+      $event.target.style.left = $event.deltaX + 'px';
+    }
+  }
+
+  onSwipeEnd($event) {
+    console.log($event);
+    if ($event.target.offsetParent.localName === 'li') {
+      $event.target.offsetParent.style.left = null;
+      $event.target.offsetParent.style.right = null;
+    } else if ($event.target.localName === 'li') {
+      $event.target.offsetParent.style.left = null;
+      $event.target.offsetParent.style.right = null;
+    }
+  }
+
   setGradients() {
     this.gradients = this.gradient('#fa6855', '#c24448', this.players.length);
   }

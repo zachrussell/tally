@@ -15,6 +15,9 @@ Codepen: https://codepen.io/supah/
   </h1>
   <ul>
 		<li *ngFor="let player of players; let i = index; let first = first; let last = last"
+			(panleft)="onSwipeLeft($event)"
+			(panright)="onSwipeRight($event)"
+			(panend)="onSwipeEnd($event)"
 			[class.first-place]="first"
 			[class.last-place]="last"
 			[style.background]="gradients[i]"
