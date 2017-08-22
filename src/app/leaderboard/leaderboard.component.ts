@@ -23,22 +23,29 @@ export class LeaderboardComponent implements OnInit {
     this.setGradients();
   }
 
-  onSwipeLeft($event) {
-    if (Math.abs($event.deltaX) <= 100) {
-      if ($event.target.offsetParent.localName === 'li') {
-        $event.target.offsetParent.style.right = Math.abs($event.deltaX) + 'px';
-      } else if ($event.target.localName === 'li') {
-        $event.target.style.right = ($event.deltaX * -1) + 'px';
+  onSwipe($event) {
+    console.log($event);
+    if ($event.offsetDirection === 4) {
+      // swipe right
+      if (Math.abs($event.deltaX) <= 100) {
+        if ($event.target.offsetParent.localName === 'li') {
+          $event.target.offsetParent.style.left = Math.abs($event.deltaX) + 'px';
+          $event.target.offsetParent.children[0].style.paddingRight = Math.abs($event.deltaX * 4) + 'px';
+        } else if ($event.target.localName === 'li') {
+          $event.target.style.left = $event.deltaX + 'px';
+          $event.target.children[0].style.paddingRight = Math.abs($event.deltaX * 4) + 'px';
+        }
       }
-    }
-  }
-
-  onSwipeRight($event) {
-    if (Math.abs($event.deltaX) <= 100) {
-      if ($event.target.offsetParent.localName === 'li') {
-        $event.target.offsetParent.style.left = Math.abs($event.deltaX) + 'px';
-      } else if ($event.target.localName === 'li') {
-        $event.target.style.left = $event.deltaX + 'px';
+    } else if ($event.offsetDirection === 2) {
+      // swipe left
+      if (Math.abs($event.deltaX) <= 100) {
+        if ($event.target.offsetParent.localName === 'li') {
+          $event.target.offsetParent.style.right = Math.abs($event.deltaX) + 'px';
+          $event.target.offsetParent.children[2].style.paddingLeft = Math.abs($event.deltaX * 4) + 'px';
+        } else if ($event.target.localName === 'li') {
+          $event.target.style.right = ($event.deltaX * -1) + 'px';
+          $event.target.children[2].style.paddingLeft = Math.abs($event.deltaX * 4) + 'px';
+        }
       }
     }
   }
@@ -48,10 +55,14 @@ export class LeaderboardComponent implements OnInit {
     if ($event.target.offsetParent.localName === 'li') {
       $event.target.offsetParent.style.left = null;
       $event.target.offsetParent.style.right = null;
+      $event.target.offsetParent.children[2].style.paddingLeft = null;
+      $event.target.offsetParent.children[0].style.paddingRight = null;
       playerId = $event.target.offsetParent.id;
     } else if ($event.target.localName === 'li') {
       $event.target.style.left = null;
       $event.target.style.right = null;
+      $event.target.children[2].style.paddingLeft = null;
+      $event.target.children[0].style.paddingRight = null;
       playerId = $event.target.id;
     }
 

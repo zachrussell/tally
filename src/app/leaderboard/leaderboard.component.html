@@ -16,15 +16,16 @@ Codepen: https://codepen.io/supah/
 	<!-- <pre>{{players | json}}</pre> -->
   <ul>
 		<li *ngFor="let player of players; let i = index; let first = first; let last = last"
-			(panleft)="onSwipeLeft($event)"
-			(panright)="onSwipeRight($event)"
+			(panmove)="onSwipe($event)"
 			(panend)="onSwipeEnd($event)"
 			[class.first-place]="first"
 			[class.last-place]="last"
 			[style.background]="gradients[i]"
 			[attr.id]="player.id"
 		>
+			<span class="slide-button left-slide-button">win</span>
 			<app-slot [player]="player" [position]="i + 1"></app-slot>
+			<span class="slide-button right-slide-button">loss</span>
 		</li>
 		<li *ngIf="players.length === 0">
 			You have no players.
