@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { ScoreService } from './score-service.service';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { SlotComponent } from './slot/slot.component';
+import { SettingsComponent } from './settings/settings.component';
 
 export class MyHammerConfig extends HammerGestureConfig  {
   overrides = <any>{
@@ -23,7 +24,8 @@ export class MyHammerConfig extends HammerGestureConfig  {
   declarations: [
     AppComponent,
     LeaderboardComponent,
-    SlotComponent
+    SlotComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,

@@ -8,9 +8,9 @@ import { ScoreService } from './score-service.service';
 })
 export class AppComponent {
   title = 'app';
-  playerName = '';
   players = [];
   teams = [];
+  settingsShowing = false;
 
   constructor(
     private _scoreService: ScoreService
@@ -21,14 +21,9 @@ export class AppComponent {
     this.teams = this._scoreService.getTeams();
   }
 
-  addPlayer(name) {
-    this._scoreService.createPlayer(name);
+  onSettingsChanged($event) {
+    this.teams = this._scoreService.getTeams();
     this.players = this._scoreService.getPlayers();
-    this.playerName = '';
   }
 
-  addTeam(idOne, idTwo) {
-    this._scoreService.createTeam(idOne, idTwo);
-    this.teams = this._scoreService.getTeams();
-  }
 }
