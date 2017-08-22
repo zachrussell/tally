@@ -7,17 +7,22 @@
         <path d="M0 0h24v24H0z" fill="none"/>
     </svg>
 
-    <input type="text" placeholder="player name" [(ngModel)]="playerName" (keyup.enter)="addPlayer(playerName)">
+    <h3>Add Player</h3>
+    <input type="text" placeholder="Player Name" [(ngModel)]="playerName" (keyup.enter)="addPlayer(playerName)">
+    <input type="button" (click)="addPlayer(playerName)" value="Add">
     <br>
 
+    <h3>Add Team</h3>
     <select name="playerSelection" #playerOne>
-    <option *ngFor="let plr of players" [value]="plr.id">{{plr.name}}</option>
+      <option *ngFor="let plr of players" [value]="plr.id">{{plr.name}}</option>
     </select>
-    and
+    <h5>and</h5>
     <select name="playerSelection" #playerTwo>
-    <option *ngFor="let plr of players" [value]="plr.id">{{plr.name}}</option>
+      <option *ngFor="let plr of players" [value]="plr.id">{{plr.name}}</option>
     </select>
-    <p (click)="addTeam(playerOne.value, playerTwo.value)">add team</p>
+    <br>
+    <br>
+    <input type="button" (click)="addTeam(playerOne.value, playerTwo.value)" value="Add">
   </div>
   
 </div>
