@@ -15,6 +15,6 @@
 </app-settings>
 <br>
 <div class="boards">
-  <app-leaderboard [title]="'Singles'" [players]="players"></app-leaderboard>
-  <app-leaderboard [title]="'Doubles'" [players]="teams"></app-leaderboard>
+  <app-leaderboard [title]="'Singles'" (playersChanged)="onPlayersChanged($event)" [players]="players"></app-leaderboard>
+  <app-leaderboard [title]="'Doubles'" (playersChanged)="onPlayersChanged($event)" [players]="teams"></app-leaderboard>
 </div>

@@ -1,12 +1,13 @@
-<div class="slot-container" (click)="menuShowing = !menuShowing">
+<div class="slot-container">
   <span class="counter">{{ position }}</span>
   <mark>{{player.name}}</mark>
+  <small>{{calcRatio() | number : '1.2-2'}}</small>
   <small>{{player.wins}}</small>
   <small>{{player.losses}}</small>
-  <div class="button-container"
+  <!-- <div class="button-container"
     [class.showing]="menuShowing"
   >
       <button (click)="addWin($event)" id='{{player.id}}'>Win</button>
       <button (click)="addLoss($event)">Loss</button>
-  </div>
+  </div> -->
 </div>

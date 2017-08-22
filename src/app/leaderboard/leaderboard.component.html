@@ -12,7 +12,8 @@ Codepen: https://codepen.io/supah/
       <use xlink:href="#cup"></use>
     </svg>
     {{ title }}
-  </h1>
+	</h1>
+	<!-- <pre>{{players | json}}</pre> -->
   <ul>
 		<li *ngFor="let player of players; let i = index; let first = first; let last = last"
 			(panleft)="onSwipeLeft($event)"
@@ -21,9 +22,13 @@ Codepen: https://codepen.io/supah/
 			[class.first-place]="first"
 			[class.last-place]="last"
 			[style.background]="gradients[i]"
+			[attr.id]="player.id"
 		>
 			<app-slot [player]="player" [position]="i + 1"></app-slot>
-    </li>
+		</li>
+		<li *ngIf="players.length === 0">
+			You have no players.
+		</li>
   </ul>
 </div>
 <svg style="display: none;">

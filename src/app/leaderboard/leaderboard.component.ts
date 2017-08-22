@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges} from '@angular/core';
 import { ScoreService } from '../score-service.service';
 
 @Component({
@@ -10,6 +10,7 @@ export class LeaderboardComponent implements OnInit {
 
   @Input() title = 'Leader Board';
   @Input() players = [];
+  @Output() playersChanged: EventEmitter<boolean> = new EventEmitter();
   public gradients = null;
   constructor(private _scoreService: ScoreService) { }
 
@@ -23,8 +24,6 @@ export class LeaderboardComponent implements OnInit {
   }
 
   onSwipeLeft($event) {
-    console.log('swipe left', $event);
-
     if (Math.abs($event.deltaX) <= 100) {
       if ($event.target.offsetParent.localName === 'li') {
         $event.target.offsetParent.style.right = Math.abs($event.deltaX) + 'px';
@@ -35,8 +34,6 @@ export class LeaderboardComponent implements OnInit {
   }
 
   onSwipeRight($event) {
-    console.log('swipe right', $event.deltaX);
-
     if (Math.abs($event.deltaX) <= 100) {
       if ($event.target.offsetParent.localName === 'li') {
         $event.target.offsetParent.style.left = Math.abs($event.deltaX) + 'px';
@@ -47,13 +44,25 @@ export class LeaderboardComponent implements OnInit {
   }
 
   onSwipeEnd($event) {
-    console.log($event);
+    let playerId = '';
     if ($event.target.offsetParent.localName === 'li') {
       $event.target.offsetParent.style.left = null;
       $event.target.offsetParent.style.right = null;
+      playerId = $event.target.offsetParent.id;
     } else if ($event.target.localName === 'li') {
       $event.target.style.left = null;
       $event.target.style.right = null;
+      playerId = $event.target.id;
+    }
+
+    if (Math.abs($event.deltaX) >= 100) {
+      if ($event.offsetDirection === 4) {
+        this._scoreService.addWin(this._scoreService.getPlayerOrTeamById(playerId));
+      } else if ($event.offsetDirection === 2) {
+        this._scoreService.addLoss(this._scoreService.getPlayerOrTeamById(playerId));
+      }
+
+      this.playersChanged.emit(true);
     }
   }
 

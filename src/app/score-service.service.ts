@@ -21,12 +21,30 @@ export class ScoreService {
     db.defaults({ teams: [] }).write();
   }
 
+  getPlayerOrTeamById(id) {
+    const player = db.get('players').find({ id: id }).value();
+
+    if (player !== undefined) {
+      return player;
+    } else {
+      return db.get('teams').find({ id: id }).value();
+    }
+  }
+
   getPlayers() {
-    return db.get('players').value();
+    const players = db.get('players').value();
+
+    players.sort(this.scoreCalc);
+
+    return players;
   }
 
   getTeams() {
-    return db.get('teams').value();
+    const teams = db.get('teams').value();
+
+    teams.sort(this.scoreCalc);
+
+    return teams;
   }
 
   createPlayer(name: string) {
@@ -66,6 +84,27 @@ export class ScoreService {
   addLoss(player: IPlayer) {
     player.losses++;
     db.get('players').find({ id: player.id }).assign(player).write();
+  }
+
+  // Utilities
+
+  scoreCalc (a, b) {
+    const aWins = parseFloat(a.wins);
+    const aLosses = parseFloat(a.losses);
+    const aRatio = aWins === 0 && aLosses === 0 ? 0 : (aWins / (aWins + aLosses));
+    const bWins = parseFloat(b.wins);
+    const bLosses = parseFloat(a.losses);
+    const bRatio = bWins === 0 && bLosses === 0 ? 0 : (bWins / (bWins + bLosses));
+
+    if ( aRatio > bRatio ) {
+      return -1;
+    }
+
+    if ( aRatio < bRatio ) {
+      return 1;
+    }
+
+    return 0;
   }
 
 }

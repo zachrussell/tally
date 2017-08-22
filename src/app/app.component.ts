@@ -17,11 +17,18 @@ export class AppComponent {
   ) {}
 
   ngOnInit() {
-    this.players = this._scoreService.getPlayers();
-    this.teams = this._scoreService.getTeams();
+    this.loadData();
   }
 
   onSettingsChanged($event) {
+    this.loadData();
+  }
+
+  onPlayersChanged($event) {
+    this.loadData();
+  }
+
+  loadData() {
     this.teams = this._scoreService.getTeams();
     this.players = this._scoreService.getPlayers();
   }

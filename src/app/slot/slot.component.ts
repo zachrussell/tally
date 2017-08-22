@@ -26,11 +26,19 @@ export class SlotComponent implements OnInit {
     console.log('edit score for ', index);
   }
 
-  addWin(e) {
-    this._scoreService.addWin(this.player);
+  calcRatio() {
+    if (this.player.wins + this.player.losses === 0) {
+      return 0;
+    } else {
+      return this.player.wins / (this.player.wins + this.player.losses);
+    }
   }
 
-  addLoss(e) {
-    this._scoreService.addLoss(this.player);
-  }
+  // addWin(e) {
+  //   this._scoreService.addWin(this.player);
+  // }
+
+  // addLoss(e) {
+  //   this._scoreService.addLoss(this.player);
+  // }
 }
