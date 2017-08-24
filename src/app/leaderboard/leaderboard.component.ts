@@ -52,23 +52,28 @@ export class LeaderboardComponent implements OnInit {
 
   onSwipeEnd($event) {
     let playerId = '';
+    let target = null;
+
     if ($event.target.offsetParent.localName === 'li') {
-      $event.target.offsetParent.style.left = null;
-      $event.target.offsetParent.style.right = null;
-      $event.target.offsetParent.children[2].style.paddingLeft = null;
-      $event.target.offsetParent.children[0].style.paddingRight = null;
+      target = $event.target.offsetParent;
       playerId = $event.target.offsetParent.id;
     } else if ($event.target.localName === 'li') {
-      $event.target.style.left = null;
-      $event.target.style.right = null;
-      $event.target.children[2].style.paddingLeft = null;
-      $event.target.children[0].style.paddingRight = null;
-      playerId = $event.target.id;
+      target = $event.target;
     }
+
+    target.style.left = null;
+    target.style.right = null;
+    target.children[2].style.paddingLeft = null;
+    target.children[0].style.paddingRight = null;
+    playerId = target.id;
 
     if (Math.abs($event.deltaX) >= 100) {
       if ($event.offsetDirection === 4) {
         this._scoreService.addWin(this._scoreService.getPlayerOrTeamById(playerId));
+        target.classList.add('confetti');
+        setTimeout(function(){
+          target.classList.remove('confetti');
+        }, 750);
       } else if ($event.offsetDirection === 2) {
         this._scoreService.addLoss(this._scoreService.getPlayerOrTeamById(playerId));
       }

@@ -8,6 +8,7 @@ import { ScoreService } from './score-service.service';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { SlotComponent } from './slot/slot.component';
 import { SettingsComponent } from './settings/settings.component';
+import {ToastModule} from 'ng2-toastr/ng2-toastr';
 
 export class MyHammerConfig extends HammerGestureConfig  {
   overrides = <any>{
@@ -31,7 +32,8 @@ export class MyHammerConfig extends HammerGestureConfig  {
   imports: [
     BrowserModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ToastModule.forRoot()
   ],
   providers: [
     ScoreService,
