@@ -88,6 +88,11 @@ export class ScoreService {
 
   // Utilities
 
+  clearAll() {
+    const newState = {};
+    db.setState(newState);
+  }
+
   scoreCalc (a, b) {
     const aWins = parseFloat(a.wins);
     const aLosses = parseFloat(a.losses);

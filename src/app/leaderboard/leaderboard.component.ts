@@ -24,7 +24,6 @@ export class LeaderboardComponent implements OnInit {
   }
 
   onSwipe($event) {
-    console.log($event);
     if ($event.offsetDirection === 4) {
       // swipe right
       if (Math.abs($event.deltaX) <= 100) {

@@ -44,4 +44,8 @@ export class SettingsComponent implements OnInit {
     }
   }
 
+  clearStorage() {
+    this._scoreService.clearAll();
+  }
+
 }
